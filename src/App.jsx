@@ -1,16 +1,51 @@
-import { useEffect } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Services from './components/Services';
-import FineArts from './components/FineArts';
-import Training from './components/Training';
-import About from './components/About';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import { useEffect } from "react";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Services from "./components/Services";
+import FineArts from "./components/FineArts";
+import Training from "./components/Training";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 function App() {
+  // Global smooth scrolling for all anchor links
   useEffect(() => {
-    // GSAP ScrollTrigger registration will be handled in components where needed
+    const handleAnchorClick = (e) => {
+      const href = e.currentTarget.getAttribute("href");
+
+      if (href?.startsWith("#")) {
+        e.preventDefault(); // Stop default jump
+        const targetId = href.substring(1); // Remove the #
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+          const navbarHeight = 80; // Adjust if your navbar height changes
+
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition =
+            elementPosition + window.scrollY - navbarHeight;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        }
+      }
+    };
+
+    // Add event listener to all anchor links
+    const anchors = document.querySelectorAll('a[href^="#"]');
+    anchors.forEach((anchor) => {
+      anchor.addEventListener("click", handleAnchorClick);
+    });
+
+    // Cleanup
+    return () => {
+      anchors.forEach((anchor) => {
+        anchor.removeEventListener("click", handleAnchorClick);
+      });
+    };
   }, []);
 
   return (
