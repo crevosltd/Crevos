@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { navLinks } from '../assets/assets';
+import logo from '../assets/logo.png';
 
 export default function Navbar() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -24,7 +25,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center">
           <a href="#" className="font-display text-2xl font-bold tracking-tighter text-white group">
             {/* CREVOS<span className="text-primary group-hover:text-secondary transition-colors">.</span> */}
-            <img src="src/assets/logo.png" alt="Crevos Logo" width={100} height={100} className="rounded-full" />
+            <img src={logo} alt="Crevos Logo" width={100} height={100} className="rounded-full" />
 
           </a>
 
