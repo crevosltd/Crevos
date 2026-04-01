@@ -26,7 +26,7 @@ export default function Contact() {
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-16">
           <span className="text-primary font-medium tracking-wider text-sm uppercase mb-4 block">Get in Touch</span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">Let's Create Together</h2>
+          <h2 className="font-hero text-4xl md:text-5xl font-bold text-white mb-6">Let's Create Together</h2>
           <p className="text-gray-400 text-lg">Ready to start your project? Reach out and let's discuss how we can bring your vision to life.</p>
         </div>
 

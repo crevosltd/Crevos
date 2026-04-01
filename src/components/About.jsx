@@ -36,7 +36,7 @@ export default function About() {
 
           <div className="order-1 lg:order-2">
             <span className="text-primary font-medium tracking-wider text-sm uppercase mb-4 block">About Crevos</span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">Bridging Creativity & Commerce</h2>
+            <h2 className="font-hero text-4xl md:text-5xl font-bold text-white mb-6">Bridging Creativity & Commerce</h2>
             <p className="text-gray-400 text-lg mb-6 leading-relaxed">
               Crevos LTD stands at the intersection of artistic expression and digital innovation. Founded with a vision 
               to democratize creative excellence, we serve clients ranging from startups to established enterprises, 

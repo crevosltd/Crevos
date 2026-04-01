@@ -6,6 +6,7 @@
   --color-accent: #f6a600;
   --color-dark: #0f172a;
   --color-light: #f8fafc;
+  --font-hero: 'Stardos Stencil', sans-serif;
 }
 
 .font-display {
@@ -13,7 +14,7 @@
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #3e7baa 0%, #c45c4a 50%, #d4855a 100%);
+  background: linear-gradient(135deg, #3e7baa 15%, #c45c4a 50%, #d4855a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

@@ -27,6 +27,7 @@ export default function Hero() {
 
   return (
     <section
+      id="Hero"
       className="relative min-h-screen flex items-center justify-center hero-bg bg-cover bg-center overflow-hidden"
       style={{
         backgroundImage: `url(${heroBackground})`,
@@ -38,7 +39,6 @@ export default function Hero() {
       {/* Optional subtle gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/70" />
 
-
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-pulse" />
@@ -49,20 +49,20 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
         <div className="hero-content opacity-0 translate-y-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
             <span className="text-xs font-medium text-gray-300 tracking-wide uppercase">
               Creative & Digital Agency
             </span>
           </div>
 
-          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+          <h1 className="font-hero text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
             We Craft <span className="gradient-text">Digital</span>
             <br />
             <span className="text-white">Experiences</span>
           </h1>
 
           <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-400 mb-12 leading-relaxed">
-            Crevos LTD delivers comprehensive creative solutions—from motion
+            Crevos LTD delivers comprehensive creative solutions from motion
             graphics to fine arts, vocational training to management
             consultancy. Where innovation meets tradition.
           </p>
@@ -89,7 +89,7 @@ export default function Hero() {
             </a>
             <a
               href="#contact"
-              className="magnetic-btn px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/20 text-white font-medium rounded-full transition-all"
+              className="magnetic-btn px-8 py-4 bg-accent/5 hover:bg-accent/10 border border-white/20 text-white font-medium rounded-full transition-all"
             >
               Start a Project
             </a>
