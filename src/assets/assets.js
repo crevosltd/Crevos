@@ -44,4 +44,22 @@ export const services = [
     description: "User-centered interface design that balances aesthetics with intuitive functionality.",
     color: "accent"
   },
+   {
+    iconKey: "illustration",
+    title: "Illustration & Digital Art",
+    description: "Custom illustrations, digital paintings, and artistic visuals that tell compelling stories.",
+    color: "primary"
+  },
+  {
+    iconKey: "social",
+    title: "Social Media Management",
+    description: "Strategic social media campaigns, content creation, and community engagement that grow your brand.",
+    color: "secondary"
+  },
+  {
+    iconKey: "academy",
+    title: "Crevos Academy",
+    description: "Professional training and workshops in digital skills, traditional arts, and creative entrepreneurship.",
+    color: "accent"
+  },
 ];
