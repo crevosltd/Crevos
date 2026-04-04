@@ -64,7 +64,7 @@ export default function Hero() {
           <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-400 mb-12 leading-relaxed">
             Crevos LTD delivers comprehensive creative solutions from motion
             graphics to fine arts, vocational training to management
-            consultancy. Where innovation meets tradition.
+            consultancy. Where innovation meets tradition. 
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
