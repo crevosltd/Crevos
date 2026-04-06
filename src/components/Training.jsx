@@ -3,8 +3,8 @@ export default function Training() {
     <section id="training" className="py-32 relative">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <span className="text-accent font-medium tracking-wider text-sm uppercase mb-4 block">Education</span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">Vocational Training & Workshops</h2>
+          <span className="text-accent font-medium tracking-wider text-sm uppercase mb-4 block">Crevos Academy</span>
+          <h2 className="font-hero text-4xl md:text-5xl font-bold text-white mb-6">Training & Workshops</h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
             Empowering the next generation of creatives through hands-on education in digital and artistic disciplines.
           </p>

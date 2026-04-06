@@ -2,13 +2,19 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+// Register ScrollTrigger once
+gsap.registerPlugin(ScrollTrigger);
+
 // Import all your images
-import graphicsImg from '../assets/graphics-design.png';
+import graphicsImg from '../assets/graphics.png';
 import motionImg from '../assets/adobe-after-effects.png';        // change filename as needed
 import videoImg from '../assets/reels-video.png';
 import photographyImg from '../assets/camera.png';
-import codingImg from '../assets/coding-folder.png';
+import codingImg from '../assets/coding.png';
 import uiuxImg from '../assets/figma.png';
+import illustrationImg from '../assets/illustration.png';
+import socialImg from '../assets/social-media.png';
+import academyImg from '../assets/graduate.png';
 
 const iconMap = {
   graphics: graphicsImg,
@@ -17,6 +23,9 @@ const iconMap = {
   photography: photographyImg,
   coding: codingImg,
   uiux: uiuxImg,
+  illustration: illustrationImg,
+  social: socialImg,
+  academy: academyImg,
 };
 
 export default function ServiceCard({ 
@@ -27,21 +36,46 @@ export default function ServiceCard({
 }) {
   const cardRef = useRef(null);
 
-//   useEffect(() => {
-//     if (!cardRef.current) return;
+  // useEffect(() => {
+  //   if (!cardRef.current) return;
 
-//     gsap.from(cardRef.current, {
-//       scrollTrigger: {
-//         trigger: cardRef.current,
-//         start: "top 85%",
-//         toggleActions: "play none none reverse"
-//       },
-//       opacity: 0,
-//       y: 30,
-//       duration: 0.6,
-//       ease: "power2.out"
-//     });
-//   }, []);
+  //   gsap.from(cardRef.current, {
+  //     scrollTrigger: {
+  //       trigger: cardRef.current,
+  //       start: "top top",
+  //       toggleActions: "play none none reverse",
+  //       markers: true,
+  //     },
+  //     opacity: 0,
+  //     y: 30,
+  //     duration: 0.6,
+  //     ease: "power2.out"
+  //   });
+  // }, []);
+
+  useEffect(() => {
+  if (!cardRef.current) return;
+
+  gsap.fromTo(
+    cardRef.current,
+    {
+      opacity: 0,      // Starting state
+      y: 60,           // Starts 60px below (you can use negative for above: y: -60)
+    },
+    {
+      opacity: 1,      // Ending state
+      y: 0,            // Moves to its original position
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: cardRef.current,
+        start: "top 85%",        // When the top of the card reaches 85% of viewport
+        toggleActions: "play none none reverse",  // Play on enter, reverse on leave
+      }
+    }
+  );
+
+}, []);
 
   const colorClasses = {
     primary: "bg-primary/20 text-primary hover:border-primary/50 from-primary/10",
