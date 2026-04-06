@@ -71,3 +71,31 @@ export const services = [
     color: "accent",
   },
 ];
+
+// src/data/testimonials.js
+export const testimonials = [
+  {
+    id: 1,
+    name: "Aisha Bello",
+    role: "Creative Director, Lumina Studios",
+    image: "/assets/testimonial1.jpg", // replace with real images later
+    quote: "Crevos transformed our brand identity completely. Their blend of digital expertise and traditional artistry is unmatched. The team delivered beyond our expectations.",
+    rating: 5,
+  },
+  {
+    id: 2,
+    name: "Michael Okonkwo",
+    role: "Founder, TechNova",
+    image: "/assets/testimonial2.jpg",
+    quote: "Working with Crevos on our motion graphics and UI/UX was a game changer. Their attention to detail and creative vision helped us stand out in a competitive market.",
+    rating: 5,
+  },
+  {
+    id: 3,
+    name: "Fatima Yusuf",
+    role: "CEO, Adire Heritage",
+    image: "/assets/testimonial3.jpg",
+    quote: "The Crevos Academy training was exceptional. My team gained practical skills in both digital tools and traditional textile design. Highly recommended!",
+    rating: 5,
+  },
+];

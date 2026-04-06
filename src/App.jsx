@@ -5,6 +5,7 @@ import Services from "./components/Services";
 import FineArts from "./components/FineArts";
 import Training from "./components/Training";
 import About from "./components/About";
+import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
@@ -59,6 +60,7 @@ function App() {
       <FineArts />
       <Training />
       <About />
+      <Testimonials />
       <Contact />
       <Footer />
     </div>
