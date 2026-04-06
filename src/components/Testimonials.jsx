@@ -66,7 +66,7 @@ export default function Testimonials() {
             <div
               key={testimonial.id}
               ref={(el) => (cardsRef.current[index] = el)}
-              className="glass-card p-8 rounded-3xl flex flex-col h-full group hover:scale-[1.02] transition-transform duration-300"
+              className="glass-card p-8 rounded-3xl flex flex-col h-full group group hover:scale-[1.04] hover:shadow-2xl transition-transform duration-300"
             >
               {/* Quote */}
               <div className="flex-1 mb-8">
