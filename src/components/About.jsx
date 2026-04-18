@@ -1,3 +1,58 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
+function CountUp({ end, suffix = "" }) {
+  const [count, setCount] = useState(0);
+  const [hasStarted, setHasStarted] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasStarted(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.4 }
+    );
+
+    observer.observe(node);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+
+    let start = 0;
+    const duration = 1500;
+    let startTime = null;
+
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const current = Math.floor(progress * end);
+
+      setCount(current);
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        setCount(end);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [hasStarted, end]);
+
+  return <span ref={ref}>{count}{suffix}</span>;
+}
+
 export default function About() {
   return (
     <section id="about" className="py-32 relative bg-white/5">
@@ -6,28 +61,42 @@ export default function About() {
           <div className="order-2 lg:order-1">
             <div className="space-y-8">
               <div className="glass-card p-8 rounded-2xl">
-                <h3 className="font-display text-2xl font-bold text-white mb-4">Management Consultancy</h3>
+                <h3 className="font-display text-2xl font-bold text-white mb-4">
+                  Management Consultancy
+                </h3>
                 <p className="text-gray-400 leading-relaxed">
-                  Strategic guidance for creative businesses and general contracts. We help organizations 
-                  optimize their creative processes, implement digital transformation, and achieve operational excellence.
+                  Strategic guidance for creative businesses and general
+                  contracts. We help organizations optimize their creative
+                  processes, implement digital transformation, and achieve
+                  operational excellence.
                 </p>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="glass-card p-6 rounded-xl text-center">
-                  <div className="text-3xl font-display font-bold text-primary mb-2">50+</div>
-                  <div className="text-sm text-gray-400">Projects Completed</div>
+                  <div className="text-3xl font-display font-bold text-primary mb-2">
+                    <CountUp end={50} suffix="+" />
+                  </div>
+                  <div className="text-sm text-gray-400">
+                    Projects Completed
+                  </div>
                 </div>
                 <div className="glass-card p-6 rounded-xl text-center">
-                  <div className="text-3xl font-display font-bold text-secondary mb-2">100+</div>
+                  <div className="text-3xl font-display font-bold text-secondary mb-2">
+                    <CountUp end={100} suffix="+" />
+                  </div>
                   <div className="text-sm text-gray-400">Students Trained</div>
                 </div>
                 <div className="glass-card p-6 rounded-xl text-center">
-                  <div className="text-3xl font-display font-bold text-accent mb-2">15+</div>
+                  <div className="text-3xl font-display font-bold text-accent mb-2">
+                    <CountUp end={15} suffix="+" />
+                  </div>
                   <div className="text-sm text-gray-400">Art Exhibitions</div>
                 </div>
                 <div className="glass-card p-6 rounded-xl text-center">
-                  <div className="text-3xl font-display font-bold text-primary mb-2">24/7</div>
+                  <div className="text-3xl font-display font-bold text-primary mb-2">
+                    24/7
+                  </div>
                   <div className="text-sm text-gray-400">Support</div>
                 </div>
               </div>
@@ -35,36 +104,88 @@ export default function About() {
           </div>
 
           <div className="order-1 lg:order-2">
-            <span className="text-primary font-medium tracking-wider text-sm uppercase mb-4 block">About Crevos</span>
-            <h2 className="font-hero text-4xl md:text-5xl font-bold text-white mb-6">Bridging Creativity & Commerce</h2>
+            <span className="text-primary font-medium tracking-wider text-sm uppercase mb-4 block">
+              About Crevos
+            </span>
+            <h2 className="font-hero text-4xl md:text-5xl font-bold text-white mb-6">
+              Where Logic Meets Expression.
+            </h2>
             <p className="text-gray-400 text-lg mb-6 leading-relaxed">
-              Crevos LTD stands at the intersection of artistic expression and digital innovation. Founded with a vision 
-              to democratize creative excellence, we serve clients ranging from startups to established enterprises, 
-              while nurturing local talent through education and apprenticeship.
+              Founded on the principles of precision and creative excellence,
+              Crevos Ltd was established to solve the problem of fragmented
+              branding. We noticed that businesses often had to choose between a
+              technical partner who understood code or a creative partner who
+              understood art. Crevos is the bridge.
             </p>
             <p className="text-gray-400 leading-relaxed mb-8">
-              Our dual focus on cutting-edge digital services and traditional arts preservation makes us uniquely positioned 
-              to offer holistic creative solutions that honor cultural heritage while embracing future technologies.
+              By integrating Management Consultancy with high-end Digital Media
+              and Web Tech, we provide a 360-degree ecosystem for brands that
+              refuse to settle. Whether we are engineering a complex web
+              platform or producing cinematic brand stories, our goal remains
+              the same: delivering a product that is as functional as it is
+              beautiful.
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <div className="flex items-center gap-2 text-sm text-gray-300">
-                <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                </svg>
-                Certified Professionals
+              <div>
+                <h2 className="mb-3 text-2xl">
+                  Our Philosophy: The Success Triad
+                </h2>
+                <p className="text-gray-400 leading-relaxed">
+                  We don’t just measure success by the final deliverable. We
+                  measure it by the satisfaction of everyone involved. Our
+                  "Win-Win-Win" mantra ensures that:
+                </p>
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-300">
-                <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                <svg
+                  className="w-5 h-5 text-primary"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M5 13l4 4L19 7"
+                  />
                 </svg>
-                Quality Assured
+                Our Clients receive world-class solutions that drive growth.
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-300">
-                <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                <svg
+                  className="w-5 h-5 text-primary"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M5 13l4 4L19 7"
+                  />
                 </svg>
-                Timely Delivery
+                Our Employees are empowered to do their best work in a rewarding
+                environment.
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-300">
+                <svg
+                  className="w-5 h-5 text-primary"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                Our Leadership finds fulfillment in the shared success of the
+                collective.
               </div>
             </div>
           </div>

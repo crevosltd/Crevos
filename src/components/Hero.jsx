@@ -56,15 +56,15 @@ export default function Hero() {
           </div>
 
           <h1 className="font-hero text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-            We Craft <span className="gradient-text">Digital</span>
+            Where Creativity <span className="gradient-text">Meets</span>
             <br />
-            <span className="text-white">Experiences</span>
+            <span className="text-white">Capability</span>
           </h1>
 
           <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-400 mb-12 leading-relaxed">
             Crevos LTD delivers comprehensive creative solutions from motion
-            graphics to fine arts, vocational training to management
-            consultancy. Where innovation meets tradition. 
+            graphics to web development, vocational training to management
+            consultancy.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

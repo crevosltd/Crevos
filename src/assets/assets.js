@@ -53,7 +53,7 @@ export const services = [
     iconKey: "illustration",
     title: "Illustration & Digital Art",
     description:
-      "Custom illustrations, digital paintings, and artistic visuals that tell compelling stories.",
+      "Custom illustrations, digital paintings, and artistic visuals that tell compelling stories including Children book illustration.",
     color: "primary",
   },
   {
@@ -79,7 +79,8 @@ export const testimonials = [
     name: "Aisha Bello",
     role: "Creative Director, Lumina Studios",
     image: "/assets/testimonial1.jpg", // replace with real images later
-    quote: "Crevos transformed our brand identity completely. Their blend of digital expertise and traditional artistry is unmatched. The team delivered beyond our expectations.",
+    quote:
+      "Crevos transformed our brand identity completely. Their blend of digital expertise and traditional artistry is unmatched. The team delivered beyond our expectations.",
     rating: 5,
   },
   {
@@ -87,7 +88,8 @@ export const testimonials = [
     name: "Michael Okonkwo",
     role: "Founder, TechNova",
     image: "/assets/testimonial2.jpg",
-    quote: "Working with Crevos on our motion graphics and UI/UX was a game changer. Their attention to detail and creative vision helped us stand out in a competitive market.",
+    quote:
+      "Working with Crevos on our motion graphics and UI/UX was a game changer. Their attention to detail and creative vision helped us stand out in a competitive market.",
     rating: 5,
   },
   {
@@ -95,7 +97,8 @@ export const testimonials = [
     name: "Fatima Yusuf",
     role: "CEO, Adire Heritage",
     image: "/assets/testimonial3.jpg",
-    quote: "The Crevos Academy training was exceptional. My team gained practical skills in both digital tools and traditional textile design. Highly recommended!",
+    quote:
+      "The Crevos Academy training was exceptional. My team gained practical skills in both digital tools and traditional textile design. Highly recommended!",
     rating: 5,
   },
 ];
