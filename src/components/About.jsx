@@ -91,7 +91,7 @@ export default function About() {
                   <div className="text-3xl font-display font-bold text-accent mb-2">
                     <CountUp end={15} suffix="+" />
                   </div>
-                  <div className="text-sm text-gray-400">Art Exhibitions</div>
+                  <div className="text-sm text-gray-400">Trusted Companies</div>
                 </div>
                 <div className="glass-card p-6 rounded-xl text-center">
                   <div className="text-3xl font-display font-bold text-primary mb-2">

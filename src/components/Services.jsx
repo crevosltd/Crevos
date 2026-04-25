@@ -1,6 +1,7 @@
 import { services } from '../assets/assets';
 import ServiceCard from './ServiceCard';
 
+
 export default function Services() {
   return (
     <section id="services" className="py-32 relative">
@@ -19,6 +20,7 @@ export default function Services() {
               title={service.title}
               description={service.description}
               color={service.color}
+              image={service.image} // Pass the image prop to the ServiceCard
             />
           ))}
         </div>

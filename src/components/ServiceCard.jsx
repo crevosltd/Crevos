@@ -1,20 +1,20 @@
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // Register ScrollTrigger once
 gsap.registerPlugin(ScrollTrigger);
 
 // Import all your images
-import graphicsImg from '../assets/graphics.png';
-import motionImg from '../assets/adobe-after-effects.png';        // change filename as needed
-import videoImg from '../assets/reels-video.png';
-import photographyImg from '../assets/camera.png';
-import codingImg from '../assets/coding.png';
-import uiuxImg from '../assets/figma.png';
-import illustrationImg from '../assets/illustration.png';
-import socialImg from '../assets/social-media.png';
-import academyImg from '../assets/graduate.png';
+import graphicsImg from "../assets/graphics.png";
+import motionImg from "../assets/adobe-after-effects.png"; // change filename as needed
+import videoImg from "../assets/reels-video.png";
+import photographyImg from "../assets/camera.png";
+import codingImg from "../assets/coding.png";
+import uiuxImg from "../assets/figma.png";
+import illustrationImg from "../assets/illustration.png";
+import socialImg from "../assets/social-media.png";
+import academyImg from "../assets/graduate.png";
 
 const iconMap = {
   graphics: graphicsImg,
@@ -28,80 +28,76 @@ const iconMap = {
   academy: academyImg,
 };
 
-export default function ServiceCard({ 
-  iconKey, 
-  title, 
-  description, 
-  color = "primary" 
+export default function ServiceCard({
+  iconKey,
+  image,
+  title,
+  description,
+  color = "primary",
 }) {
   const cardRef = useRef(null);
 
-  // useEffect(() => {
-  //   if (!cardRef.current) return;
-
-  //   gsap.from(cardRef.current, {
-  //     scrollTrigger: {
-  //       trigger: cardRef.current,
-  //       start: "top top",
-  //       toggleActions: "play none none reverse",
-  //       markers: true,
-  //     },
-  //     opacity: 0,
-  //     y: 30,
-  //     duration: 0.6,
-  //     ease: "power2.out"
-  //   });
-  // }, []);
-
   useEffect(() => {
-  if (!cardRef.current) return;
+    if (!cardRef.current) return;
 
-  gsap.fromTo(
-    cardRef.current,
-    {
-      opacity: 0,      // Starting state
-      y: 60,           // Starts 60px below (you can use negative for above: y: -60)
-    },
-    {
-      opacity: 1,      // Ending state
-      y: 0,            // Moves to its original position
-      duration: 0.8,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: cardRef.current,
-        start: "top 85%",        // When the top of the card reaches 85% of viewport
-        toggleActions: "play none none reverse",  // Play on enter, reverse on leave
-      }
-    }
-  );
-
-}, []);
+    gsap.fromTo(
+      cardRef.current,
+      { opacity: 0, y: 60 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: cardRef.current,
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+      },
+    );
+  }, []);
 
   const colorClasses = {
-    primary: "bg-primary/20 text-primary hover:border-primary/50 from-primary/10",
-    secondary: "bg-secondary/20 text-secondary hover:border-secondary/50 from-secondary/10",
-    accent: "bg-accent/20 text-accent hover:border-accent/50 from-accent/10",
+    primary: "bg-primary text-primary border-primary",
+    secondary: "bg-secondary text-secondary border-secondary",
+    accent: "bg-accent text-accent border-accent",
   };
 
   const currentColor = colorClasses[color] || colorClasses.primary;
   const iconSrc = iconMap[iconKey];
 
   return (
-    <div 
+    <div
       ref={cardRef}
-      className={`service-card group p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-${currentColor}/50 relative overflow-hidden`}
+      className="service-card group bg-primary/10 rounded-2xl overflow-hidden shadow-lg border border-white/10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
     >
-      <div className={`absolute inset-0 bg-gradient-to-br ${currentColor.split(' ')[3]} to-transparent opacity-0 group-hover:opacity-100 transition-opacity`} />
-      
-      <div className="relative z-10">
+      <div className="relative h-44 overflow-hidden">
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+
+        <div className="absolute inset-0 bg-black/20" />
+
+        
+      </div>
+      <div
+          className={`absolute top-35 z-2000 left-6 w-14 h-14 rounded-full ${currentColor.split(" ")[0]} flex items-center justify-center shadow-lg border-4 border-primary/10`}
+        >
           {iconSrc ? (
-            <img src={iconSrc} alt={title} className="w-12 h-12 object-contain" />
+            <img src={iconSrc} alt={title} className="w-7 h-7 object-contain" />
           ) : (
-            <span className="text-2xl">📌</span> // fallback
+            <span className="text-2xl">📌</span>
           )}
-        {/* </div> */}
-        <h3 className="font-display text-xl font-bold text-white mb-3">{title}</h3>
-        <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
+        </div>
+
+      <div className="pt-10 px-6 pb-7">
+        <h3 className="font-display text-xl font-bold text-white mb-3">
+          {title}
+        </h3>
+
+        <p className="text-gray-500 text-sm leading-relaxed">{description}</p>
       </div>
     </div>
   );

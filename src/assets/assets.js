@@ -1,3 +1,13 @@
+import graphicsImg from "../assets/Graphics-service.jpg";
+import motionImg from "../assets/Motion-service.jpg";
+import videoImg from "../assets/Editing-service.jpg";
+import photographyImg from "../assets/photograpy-service.jpg";
+import codingImg from "../assets/Coding-service.jpg";
+import uiuxImg from "../assets/UIUX-service.jpg";
+import illustrationImg from "../assets/Illustration-service.jpg";
+import socialImg from "../assets/Social-service.jpg";
+import academyImg from "../assets/Academy-service.jpg";
+
 export const navLinks = [
   { href: "#hero", label: "Home" },
   { href: "#services", label: "Services" },
@@ -8,11 +18,12 @@ export const navLinks = [
 
 export const services = [
   {
-    iconKey: "graphics", // Use a key instead of the actual image
+    iconKey: "graphics",
     title: "Graphic Design",
     description:
       "Brand identity, marketing materials, and visual storytelling that captivates and converts.",
     color: "primary",
+    image: graphicsImg,
   },
   {
     iconKey: "motion",
@@ -20,6 +31,7 @@ export const services = [
     description:
       "Dynamic animations and visual effects that bring your brand story to life.",
     color: "secondary",
+    image: motionImg,
   },
   {
     iconKey: "video",
@@ -27,6 +39,7 @@ export const services = [
     description:
       "Professional post-production, color grading, and storytelling through seamless cuts.",
     color: "accent",
+    image: videoImg,
   },
   {
     iconKey: "photography",
@@ -34,6 +47,7 @@ export const services = [
     description:
       "Commercial, product, and portrait photography with artistic vision and technical precision.",
     color: "primary",
+    image: photographyImg,
   },
   {
     iconKey: "coding",
@@ -41,6 +55,7 @@ export const services = [
     description:
       "Web development, applications, and digital solutions built with modern technologies.",
     color: "secondary",
+    image: codingImg,
   },
   {
     iconKey: "uiux",
@@ -48,6 +63,7 @@ export const services = [
     description:
       "User-centered interface design that balances aesthetics with intuitive functionality.",
     color: "accent",
+    image: uiuxImg,
   },
   {
     iconKey: "illustration",
@@ -55,6 +71,7 @@ export const services = [
     description:
       "Custom illustrations, digital paintings, and artistic visuals that tell compelling stories including Children book illustration.",
     color: "primary",
+    image: illustrationImg,
   },
   {
     iconKey: "social",
@@ -62,6 +79,7 @@ export const services = [
     description:
       "Strategic social media campaigns, content creation, and community engagement that grow your brand.",
     color: "secondary",
+    image: socialImg,
   },
   {
     iconKey: "academy",
@@ -69,6 +87,7 @@ export const services = [
     description:
       "Professional training and workshops in digital skills, traditional arts, and creative entrepreneurship.",
     color: "accent",
+    image: academyImg,
   },
 ];
 
