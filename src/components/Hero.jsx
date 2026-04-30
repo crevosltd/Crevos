@@ -31,7 +31,7 @@ export default function Hero() {
   return (
     <>
       <section
-        id="Hero"
+        id="hero"
         className="relative min-h-screen flex items-center justify-center hero-bg bg-cover bg-center overflow-hidden"
         style={{
           backgroundImage: `url(${heroBackground})`,
