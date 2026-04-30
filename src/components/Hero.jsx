@@ -74,7 +74,7 @@ export default function Hero() {
                 href="#services"
                 className="magnetic-btn px-8 py-4 bg-primary hover:bg-primary/90 text-white font-medium rounded-full transition-all hover:scale-105 flex items-center gap-2"
               >
-                Explore Services
+                Book a Free Consultation
                 <svg
                   className="w-4 h-4"
                   fill="none"
