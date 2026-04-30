@@ -7,6 +7,7 @@ import uiuxImg from "../assets/UIUX-service.jpg";
 import illustrationImg from "../assets/Illustration-service.jpg";
 import socialImg from "../assets/Social-service.jpg";
 import academyImg from "../assets/Academy-service.jpg";
+import bridgewave from "./Bridgewave.PNG"
 
 export const navLinks = [
   { href: "#hero", label: "Home" },
@@ -24,6 +25,7 @@ export const services = [
       "Brand identity, marketing materials, and visual storytelling that captivates and converts.",
     color: "primary",
     image: graphicsImg,
+    link: "",
   },
   {
     iconKey: "motion",
@@ -32,6 +34,7 @@ export const services = [
       "Dynamic animations and visual effects that bring your brand story to life.",
     color: "secondary",
     image: motionImg,
+    link: "",
   },
   {
     iconKey: "video",
@@ -40,6 +43,7 @@ export const services = [
       "Professional post-production, color grading, and storytelling through seamless cuts.",
     color: "accent",
     image: videoImg,
+    link: "",
   },
   {
     iconKey: "photography",
@@ -48,6 +52,7 @@ export const services = [
       "Commercial, product, and portrait photography with artistic vision and technical precision.",
     color: "primary",
     image: photographyImg,
+    link: "",
   },
   {
     iconKey: "coding",
@@ -56,6 +61,7 @@ export const services = [
       "Web development, applications, and digital solutions built with modern technologies.",
     color: "secondary",
     image: codingImg,
+    link: "",
   },
   {
     iconKey: "uiux",
@@ -64,6 +70,7 @@ export const services = [
       "User-centered interface design that balances aesthetics with intuitive functionality.",
     color: "accent",
     image: uiuxImg,
+    link: "",
   },
   {
     iconKey: "illustration",
@@ -72,6 +79,7 @@ export const services = [
       "Custom illustrations, digital paintings, and artistic visuals that tell compelling stories including Children book illustration.",
     color: "primary",
     image: illustrationImg,
+    link: "",
   },
   {
     iconKey: "social",
@@ -80,6 +88,7 @@ export const services = [
       "Strategic social media campaigns, content creation, and community engagement that grow your brand.",
     color: "secondary",
     image: socialImg,
+    link: "",
   },
   {
     iconKey: "academy",
@@ -88,6 +97,7 @@ export const services = [
       "Professional training and workshops in digital skills, traditional arts, and creative entrepreneurship.",
     color: "accent",
     image: academyImg,
+    link: "",
   },
 ];
 
@@ -121,3 +131,11 @@ export const testimonials = [
     rating: 5,
   },
 ];
+
+export const partners = [
+  {
+    id: 1,
+    name: "Bridgewave",
+    logo: bridgewave
+  }
+]

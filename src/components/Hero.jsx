@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import heroBackground from "../assets/hero-bg.jpg";
+import { partners } from "../assets/assets";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -9,7 +10,7 @@ export default function Hero() {
   const heroRef = useRef(null);
   const scrollRef = useRef(null);
 
-  const partners = ["Rise", "Vertigo", "Minty", "Glossy", "Rise", "Waveless"];
+  // const partners = ["Rise", "Vertigo", "Minty", "Glossy", "Rise", "Waveless"];
 
   useEffect(() => {
     gsap.to(".hero-content", {
@@ -59,15 +60,13 @@ export default function Hero() {
             </div>
 
             <h1 className="font-hero text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-              Where Creativity <span className="gradient-text">Meets</span>
+              Your Brand Deserves <span className="gradient-text">More</span>
               <br />
-              <span className="text-white">Capability</span>
+              <span className="text-white">Than Average</span>
             </h1>
 
             <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-400 mb-12 leading-relaxed">
-              Crevos LTD delivers comprehensive creative solutions from motion
-              graphics to web development, vocational training to management
-              consultancy.
+              Crevos delivers creative and digital excellence, built for brands that refuse to settle.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -110,7 +109,7 @@ export default function Hero() {
           </div>
         </div>
       </section>
-      <section className="py-4 bg-white/5 h-24">
+      <section className="py-4 bg-white/45 h-24">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <p className="text-sm text-white mb-3">
             Our Patners
@@ -122,7 +121,8 @@ export default function Hero() {
                 key={`${partner}-${index}`}
                 className="text-gray-400 font-display font-bold text-lg tracking-wide grayscale opacity-70 hover:opacity-100 transition-opacity"
               >
-                {partner}
+                <img src={partner.logo} alt={partner.name} className="w-10 h-10" />
+                {/* {partner.logo} */}
               </div>
             ))}
           </div>

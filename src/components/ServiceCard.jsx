@@ -34,6 +34,7 @@ export default function ServiceCard({
   title,
   description,
   color = "primary",
+  link,
 }) {
   const cardRef = useRef(null);
 
@@ -79,25 +80,36 @@ export default function ServiceCard({
         />
 
         <div className="absolute inset-0 bg-black/20" />
-
-        
       </div>
       <div
-          className={`absolute top-35 z-2000 left-6 w-14 h-14 rounded-full ${currentColor.split(" ")[0]} flex items-center justify-center shadow-lg border-4 border-primary/10`}
-        >
-          {iconSrc ? (
-            <img src={iconSrc} alt={title} className="w-7 h-7 object-contain" />
-          ) : (
-            <span className="text-2xl">📌</span>
-          )}
-        </div>
+        className={`absolute top-35 z-2000 left-6 w-14 h-14 rounded-full ${currentColor.split(" ")[0]} flex items-center justify-center shadow-lg border-4 border-primary/10`}
+      >
+        {iconSrc ? (
+          <img src={iconSrc} alt={title} className="w-7 h-7 object-contain" />
+        ) : (
+          <span className="text-2xl">📌</span>
+        )}
+      </div>
 
       <div className="pt-10 px-6 pb-7">
         <h3 className="font-display text-xl font-bold text-white mb-3">
           {title}
         </h3>
 
-        <p className="text-gray-500 text-sm leading-relaxed">{description}</p>
+        <p className="text-gray-500 text-sm leading-relaxed mb-5">
+          {description}
+        </p>
+
+        {/* CTA */}
+        <a
+          href={link}
+          className="inline-flex items-center gap-2 text-sm font-semibold text-white group-hover:text-secondary transition-colors cursor-pointer"
+        >
+          Go to Portfolio
+          <span className="transition-transform duration-300 group-hover:translate-x-1">
+            →
+          </span>
+        </a>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import aboutimg from "../assets/Aboutimg2.jpg"
 
 function CountUp({ end, suffix = "" }) {
   const [count, setCount] = useState(0);
@@ -60,8 +61,9 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1">
             <div className="space-y-8">
-              <div className="glass-card p-8 rounded-2xl">
-                <h3 className="font-display text-2xl font-bold text-white mb-4">
+              <div className="glass-card p-8 rounded-2xl hover:scale-105">
+                <img src={aboutimg} alt="About Us Image" className="rounded-2xl" />
+                {/* <h3 className="font-display text-2xl font-bold text-white mb-4">
                   Management Consultancy
                 </h3>
                 <p className="text-gray-400 leading-relaxed">
@@ -69,7 +71,7 @@ export default function About() {
                   contracts. We help organizations optimize their creative
                   processes, implement digital transformation, and achieve
                   operational excellence.
-                </p>
+                </p> */}
               </div>
 
               <div className="grid grid-cols-2 gap-4">

@@ -1,97 +1,29 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import fineart from "../assets/fineart.jpg";
 
 export default function FineArts() {
   const sectionRef = useRef(null);
-  const cardRef = useRef(null);
   const [isFlipped, setIsFlipped] = useState(false);
 
   useEffect(() => {
     const sectionNode = sectionRef.current;
-    const cardNode = cardRef.current;
+    if (!sectionNode) return;
 
-    if (!sectionNode || !cardNode) return;
-
-    let observer = null;
-    let cleanupScroll = null;
-
-    const handleDesktop = () => {
-      observer = new IntersectionObserver(
-        ([entry]) => {
-          setIsFlipped(entry.isIntersecting);
-        },
-        {
-          threshold: 0.2,
-        }
-      );
-
-      observer.observe(sectionNode);
-    };
-
-    const handleMobile = () => {
-      const checkCardFullyInView = () => {
-        if (!cardRef.current) return;
-
-        const rect = cardRef.current.getBoundingClientRect();
-        const viewportHeight =
-          window.innerHeight || document.documentElement.clientHeight;
-
-        const fullyInView =
-          rect.top >= 0 &&
-          rect.bottom <= viewportHeight &&
-          rect.left >= 0 &&
-          rect.right <=
-            (window.innerWidth || document.documentElement.clientWidth);
-
-        if (fullyInView) {
-          setIsFlipped(true);
-          window.removeEventListener("scroll", checkCardFullyInView);
-          window.removeEventListener("resize", checkCardFullyInView);
-        }
-      };
-
-      window.addEventListener("scroll", checkCardFullyInView, {
-        passive: true,
-      });
-      window.addEventListener("resize", checkCardFullyInView);
-
-      checkCardFullyInView();
-
-      cleanupScroll = () => {
-        window.removeEventListener("scroll", checkCardFullyInView);
-        window.removeEventListener("resize", checkCardFullyInView);
-      };
-    };
-
-    const setup = () => {
-      if (observer) {
-        observer.disconnect();
-        observer = null;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsFlipped(entry.isIntersecting);
+      },
+      {
+        threshold: 0.3,
       }
+    );
 
-      if (cleanupScroll) {
-        cleanupScroll();
-        cleanupScroll = null;
-      }
-
-      const isDesktop = window.innerWidth >= 1024;
-
-      if (isDesktop) {
-        handleDesktop();
-      } else {
-        setIsFlipped(false);
-        handleMobile();
-      }
-    };
-
-    setup();
-    window.addEventListener("resize", setup);
+    observer.observe(sectionNode);
 
     return () => {
-      if (observer) observer.disconnect();
-      if (cleanupScroll) cleanupScroll();
-      window.removeEventListener("resize", setup);
+      observer.disconnect();
     };
   }, []);
 
@@ -120,103 +52,84 @@ export default function FineArts() {
             </p>
 
             <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-secondary/20 text-secondary">
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
+              {[
+                {
+                  title: "Traditional Crafts",
+                  text: "Preserving indigenous art forms through modern interpretation and sustainable practices.",
+                  color: "bg-secondary/20 text-secondary",
+                  icon: (
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth="2"
                       d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
                     />
-                  </svg>
-                </div>
-
-                <div>
-                  <h4 className="mb-2 font-bold text-white">
-                    Traditional Crafts
-                  </h4>
-                  <p className="text-sm text-gray-400">
-                    Preserving indigenous art forms through modern interpretation
-                    and sustainable practices.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-accent/20 text-accent">
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
+                  ),
+                },
+                {
+                  title: "Adire Textile Design",
+                  text: "Authentic resist-dyeing techniques creating unique patterns on premium fabrics.",
+                  color: "bg-accent/20 text-accent",
+                  icon: (
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth="2"
                       d="M3 21v-8a2 2 0 012-2h14a2 2 0 012 2v8M9 10a2 2 0 012-2h2a2 2 0 012 2"
                     />
-                  </svg>
-                </div>
-
-                <div>
-                  <h4 className="mb-2 font-bold text-white">
-                    Adire Textile Design
-                  </h4>
-                  <p className="text-sm text-gray-400">
-                    Authentic resist-dyeing techniques creating unique patterns
-                    on premium fabrics.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary">
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
+                  ),
+                },
+                {
+                  title: "Exhibition & Sales",
+                  text: "Curated galleries connecting artists with collectors and art enthusiasts.",
+                  color: "bg-primary/20 text-primary",
+                  icon: (
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth="2"
                       d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                     />
-                  </svg>
-                </div>
+                  ),
+                },
+              ].map((item) => (
+                <div key={item.title} className="flex items-start gap-4">
+                  <div
+                    className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full ${item.color}`}
+                  >
+                    <svg
+                      className="h-6 w-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      {item.icon}
+                    </svg>
+                  </div>
 
-                <div>
-                  <h4 className="mb-2 font-bold text-white">
-                    Exhibition & Sales
-                  </h4>
-                  <p className="text-sm text-gray-400">
-                    Curated galleries connecting artists with collectors and art
-                    enthusiasts.
-                  </p>
+                  <div>
+                    <h4 className="mb-2 font-bold text-white">{item.title}</h4>
+                    <p className="text-sm text-gray-400">{item.text}</p>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
 
           <div className="relative" style={{ perspective: "1200px" }}>
             <div
-              ref={cardRef}
               className="relative aspect-square will-change-transform"
               style={{
                 transformStyle: "preserve-3d",
                 WebkitTransformStyle: "preserve-3d",
-                transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
-                transition: "transform 900ms ease",
+                transform: isFlipped
+                  ? "rotateY(180deg) scale(1.02)"
+                  : "rotateY(0deg) scale(1)",
+                transition:
+                  "transform 1000ms cubic-bezier(0.22, 1, 0.36, 1)",
               }}
             >
+              {/* Front Side */}
               <div
                 className="absolute inset-0 rounded-3xl bg-gradient-to-br from-secondary/20 to-accent/20 p-1"
                 style={{
@@ -252,6 +165,7 @@ export default function FineArts() {
                 </div>
               </div>
 
+              {/* Back Side */}
               <div
                 className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 to-secondary/20 p-1"
                 style={{
@@ -261,17 +175,25 @@ export default function FineArts() {
                 }}
               >
                 <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[22px] bg-dark">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.08),_transparent_55%)]" />
-                  <div className="absolute inset-0 bg-white/[0.03]" />
+                  <img
+                    src={fineart}
+                    alt="Fine arts coming soon"
+                    className="absolute inset-0 h-full w-full object-cover opacity-35"
+                  />
+
+                  <div className="absolute inset-0 bg-black/60" />
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.16),_transparent_55%)]" />
 
                   <div className="z-10 p-8 text-center">
                     <span className="mb-4 inline-block text-xs uppercase tracking-[0.3em] text-secondary">
                       Fine Arts
                     </span>
+
                     <h3 className="mb-3 font-display text-3xl font-bold text-white md:text-4xl">
                       Coming Soon
                     </h3>
-                    <p className="text-base text-gray-400 md:text-lg">
+
+                    <p className="text-base text-gray-300 md:text-lg">
                       A curated collection of artistic expressions is on the way.
                     </p>
                   </div>
