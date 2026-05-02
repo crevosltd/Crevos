@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
@@ -8,8 +8,11 @@ import About from "./components/About";
 import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import StartProjectModal from "./components/StartProjectModal";
 
 function App() {
+   const [isModalOpen, setIsModalOpen] = useState(false);
+
   // Global smooth scrolling for all anchor links
   useEffect(() => {
     const handleAnchorClick = (e) => {
@@ -55,14 +58,18 @@ function App() {
       <div className="noise fixed inset-0 pointer-events-none z-50 opacity-[0.03]" />
 
       <Navbar />
-      <Hero />
-      <Services />
+      <Hero onStartClick={() => setIsModalOpen(true)} />
+      <Services onStartClick={() => setIsModalOpen(true)} />
       <FineArts />
       <Training />
       <About />
       <Testimonials />
       <Contact />
       <Footer />
+      <StartProjectModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { services } from "../assets/assets";
 import ServiceCard from "./ServiceCard";
 
-export default function Services() {
+export default function Services({ onStartClick }) {
   return (
     <section id="services" className="py-32 relative">
       <div className="max-w-7xl mx-auto px-6">
@@ -36,6 +36,7 @@ export default function Services() {
         <a
           href="#services"
           className="magnetic-btn px-8 py-4 bg-primary hover:bg-primary/90 text-white font-medium rounded-full transition-all hover:scale-105 flex items-center gap-2"
+           onClick={onStartClick}
         >
           Start a Project
           <svg

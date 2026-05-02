@@ -8,6 +8,9 @@ import illustrationImg from "../assets/Illustration-service.jpg";
 import socialImg from "../assets/Social-service.jpg";
 import academyImg from "../assets/Academy-service.jpg";
 import bridgewave from "./Bridgewave.PNG"
+import Aurora from "../assets/Aurora.png"
+import Fadom from "../assets/fadom.png"
+import Mayo from "../assets/Mayo.jpg"
 
 export const navLinks = [
   { href: "#hero", label: "Home" },
@@ -25,7 +28,7 @@ export const services = [
       "Brand identity, marketing materials, and visual storytelling that captivates and converts.",
     color: "primary",
     image: graphicsImg,
-    link: "",
+    link: "https://drive.google.com/file/d/1PZoZmApnyx26W1ozHjKc2YppghC4uFXe/view?usp=sharing",
   },
   {
     iconKey: "motion",
@@ -34,7 +37,7 @@ export const services = [
       "Dynamic animations and visual effects that bring your brand story to life.",
     color: "secondary",
     image: motionImg,
-    link: "",
+    link: "https://www.behance.net/gallery/191749893/Motion-Graphics",
   },
   {
     iconKey: "video",
@@ -43,7 +46,7 @@ export const services = [
       "Professional post-production, color grading, and storytelling through seamless cuts.",
     color: "accent",
     image: videoImg,
-    link: "",
+    link: "https://www.behance.net/gallery/204850993/Video-Editing",
   },
   {
     iconKey: "photography",
@@ -70,7 +73,7 @@ export const services = [
       "User-centered interface design that balances aesthetics with intuitive functionality.",
     color: "accent",
     image: uiuxImg,
-    link: "",
+    link: "https://sociatap.com/matthewbabalola",
   },
   {
     iconKey: "illustration",
@@ -79,7 +82,7 @@ export const services = [
       "Custom illustrations, digital paintings, and artistic visuals that tell compelling stories including Children book illustration.",
     color: "primary",
     image: illustrationImg,
-    link: "",
+    link: "https://drive.google.com/file/d/1DYIzX0JnHw6eZtZxHiMDDb5cHELs3aMl/view?usp=sharing",
   },
   {
     iconKey: "social",
@@ -105,29 +108,29 @@ export const services = [
 export const testimonials = [
   {
     id: 1,
-    name: "Aisha Bello",
-    role: "Creative Director, Lumina Studios",
-    image: "/assets/testimonial1.jpg", // replace with real images later
+    name: "Fadom Beauty",
+    // role: "Creative Director, Lumina Studios",
+    image: Fadom, // replace with real images later
     quote:
-      "Crevos transformed our brand identity completely. Their blend of digital expertise and traditional artistry is unmatched. The team delivered beyond our expectations.",
+      "A complete digital transformation. From a stunning brand identity and social media management to a seamless booking website, the team handled it all.  The Result: We moved from manual scheduling to a fully automated system, significantly reducing booking friction and giving us a professional edge in the beauty market.",
     rating: 5,
   },
   {
     id: 2,
-    name: "Michael Okonkwo",
-    role: "Founder, TechNova",
-    image: "/assets/testimonial2.jpg",
+    name: "Aurora Recovery Therapy",
+    // role: "Founder, ",
+    image: Aurora,
     quote:
-      "Working with Crevos on our motion graphics and UI/UX was a game changer. Their attention to detail and creative vision helped us stand out in a competitive market.",
+      "Incredible versatility. They delivered a high-performing booking app, handled our graphics, and produced video content that truly resonates with our clients.The Result: The new app streamlined our patient intake process, while the high-quality video content boosted our social media engagement and brand trust across all platforms",
     rating: 5,
   },
   {
     id: 3,
-    name: "Fatima Yusuf",
-    role: "CEO, Adire Heritage",
-    image: "/assets/testimonial3.jpg",
+    name: "MAYOSHUB",
+    // role: "CEO, Adire Heritage",
+    image: Mayo,
     quote:
-      "The Crevos Academy training was exceptional. My team gained practical skills in both digital tools and traditional textile design. Highly recommended!",
+      "The consistency in our branding and social media presence has been night and day. They took over our social media posting and strategy with total professionalism. The Result: Our online presence became more cohesive and active, resulting in better brand visibility and a more engaged community without us having to lift a finger",
     rating: 5,
   },
 ];

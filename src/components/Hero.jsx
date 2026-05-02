@@ -4,9 +4,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import heroBackground from "../assets/hero-bg.jpg";
 import { partners } from "../assets/assets";
 
+
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Hero() {
+export default function Hero({ onStartClick }) {
   const heroRef = useRef(null);
   const scrollRef = useRef(null);
 
@@ -71,7 +72,8 @@ export default function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a
-                href="#services"
+                href="https://calendly.com/d/cvxs-4ht-n7z/free-consultation"
+                target="_blank"
                 className="magnetic-btn px-8 py-4 bg-primary hover:bg-primary/90 text-white font-medium rounded-full transition-all hover:scale-105 flex items-center gap-2"
               >
                 Book a Free Consultation
@@ -90,8 +92,8 @@ export default function Hero() {
                 </svg>
               </a>
               <a
-                href="#contact"
                 className="magnetic-btn px-8 py-4 bg-accent/5 hover:bg-accent/10 border border-white/20 text-white font-medium rounded-full transition-all"
+                 onClick={onStartClick}
               >
                 Start a Project
               </a>
