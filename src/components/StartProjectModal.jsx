@@ -112,7 +112,7 @@ export default function StartProjectModal({ isOpen, onClose }) {
 
         {/* Divider */}
         <div className="my-5 border-t pt-4 text-center text-sm text-white">
-          Or reach me directly
+          Or reach us directly
         </div>
 
         {/* Contact Options */}

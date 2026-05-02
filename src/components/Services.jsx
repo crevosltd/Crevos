@@ -13,7 +13,7 @@ export default function Services({ onStartClick }) {
             Digital & Creative Services
           </h2>
           <p className="text-gray-400 max-w-2xl text-lg">
-            From pixels to prints, code to canvas—we transform ideas into
+            From pixels to prints, code to canvas, we transform ideas into
             impactful realities.
           </p>
         </div>

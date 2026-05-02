@@ -101,7 +101,8 @@ export default function ServiceCard({
         </p>
 
         {/* CTA */}
-        <a
+        {
+          iconKey !== "academy" &&  <a
           href={link}
           className="inline-flex items-center gap-2 text-sm font-semibold text-white group-hover:text-secondary transition-colors cursor-pointer"
         >
@@ -110,6 +111,8 @@ export default function ServiceCard({
             →
           </span>
         </a>
+        }
+    
       </div>
     </div>
   );
