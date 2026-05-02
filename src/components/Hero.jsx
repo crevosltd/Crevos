@@ -92,7 +92,7 @@ export default function Hero({ onStartClick }) {
                 </svg>
               </a>
               <a
-                className="magnetic-btn px-8 py-4 bg-accent/5 hover:bg-accent/10 border border-white/20 text-white font-medium rounded-full transition-all"
+                className="magnetic-btn px-8 py-4 bg-accent/5 hover:bg-accent/10 border border-white/20 text-white font-medium rounded-full transition-all cursor-pointer"
                  onClick={onStartClick}
               >
                 Start a Project
