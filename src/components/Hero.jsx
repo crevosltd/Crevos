@@ -72,7 +72,7 @@ export default function Hero({ onStartClick }) {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a
-                href="https://calendly.com/d/cvxs-4ht-n7z/free-consultation"
+                href="https://calendly.com/crevosltd-info/30min"
                 target="_blank"
                 className="magnetic-btn px-8 py-4 bg-primary hover:bg-primary/90 text-white font-medium rounded-full transition-all hover:scale-105 flex items-center gap-2"
               >
