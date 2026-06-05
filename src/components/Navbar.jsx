@@ -23,7 +23,7 @@ export default function Navbar() {
     <nav id="navbar" className={`fixed w-full z-40 transition-all duration-300 top-0 ${scrolled ? "backdrop-blur-lg bg-dark/45" : "bg-transparent"}`}>
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
-          <a href="#" className="font-display text-2xl font-bold tracking-tighter text-white group">
+          <a href="/" className="font-display text-2xl font-bold tracking-tighter text-white group">
             {/* CREVOS<span className="text-primary group-hover:text-secondary transition-colors">.</span> */}
             <img src={logo} alt="Crevos Logo" width={100} height={100} className="rounded-full" />
 

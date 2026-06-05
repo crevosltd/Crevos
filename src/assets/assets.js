@@ -13,11 +13,11 @@ import Fadom from "../assets/fadom.png"
 import Mayo from "../assets/Mayo.jpg"
 
 export const navLinks = [
-  { href: "#hero", label: "Home" },
-  { href: "#services", label: "Services" },
-  { href: "#training", label: "Academy" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Get in Touch", isButton: true },
+  { href: "/#hero", label: "Home" },
+  { href: "/#services", label: "Services" },
+  { href: "/#training", label: "Academy" },
+  { href: "/#about", label: "About" },
+  { href: "/#contact", label: "Get in Touch", isButton: true },
 ];
 
 export const services = [
@@ -64,7 +64,7 @@ export const services = [
       "Web development, applications, and digital solutions built with modern technologies.",
     color: "secondary",
     image: codingImg,
-    link: "",
+    link: "/webprojects",
   },
   {
     iconKey: "uiux",
