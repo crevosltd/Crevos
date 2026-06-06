@@ -197,7 +197,7 @@ const WebProjectsPage = () => {
                         target="_blank"
                         rel="noreferrer"
                         className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300"
-                        aria-label={`View ${project.title} GitHub repository`}
+                        aria-label={`View ${project.title} GitHub repository.`}
                       >
                         <FiGithub size={18} />
                       </a>
