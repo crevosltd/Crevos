@@ -15,6 +15,7 @@ import uiuxImg from "../assets/figma.png";
 import illustrationImg from "../assets/illustration.png";
 import socialImg from "../assets/social-media.png";
 import academyImg from "../assets/graduate.png";
+import { Link } from "react-router-dom";
 
 const iconMap = {
   graphics: graphicsImg,
@@ -101,18 +102,32 @@ export default function ServiceCard({
         </p>
 
         {/* CTA */}
-        {
-          iconKey !== "academy" &&  <a
-          href={link}
-          className="inline-flex items-center gap-2 text-sm font-semibold text-white group-hover:text-secondary transition-colors cursor-pointer"
-        >
-          Go to Portfolio
-          <span className="transition-transform duration-300 group-hover:translate-x-1">
-            →
-          </span>
-        </a>
-        }
-    
+        {/* CTA */}
+        {iconKey !== "academy" &&
+          link &&
+          (link.startsWith("/") ? (
+            <Link
+              to={link}
+              className="inline-flex items-center gap-2 text-sm font-semibold text-white group-hover:text-secondary transition-colors cursor-pointer"
+            >
+              Go to Portfolio
+              <span className="transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
+          ) : (
+            <a
+              href={link}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-white group-hover:text-secondary transition-colors cursor-pointer"
+            >
+              Go to Portfolio
+              <span className="transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
+            </a>
+          ))}
       </div>
     </div>
   );
