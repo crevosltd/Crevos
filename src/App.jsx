@@ -70,6 +70,7 @@ function App() {
     };
   }, []);
 
+
   return (
     <div className="bg-dark text-light antialiased selection:bg-primary selection:text-white overflow-x-hidden">
       <div className="noise fixed inset-0 pointer-events-none z-50 opacity-[0.03]" />

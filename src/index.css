@@ -9,6 +9,10 @@
   --font-hero: 'Stardos Stencil', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .font-display {
   font-family: 'Space Grotesk', sans-serif;
 }
