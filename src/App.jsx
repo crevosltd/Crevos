@@ -13,6 +13,7 @@ import Footer from "./components/Footer";
 import StartProjectModal from "./components/StartProjectModal";
 import WebProjectsPage from "./pages/WebProjectsPage";
 import SEO from "./components/Seo";
+import ScrollToTop from "./components/ScrollToTop";
 
 function HomePage({ onStartClick }) {
   return (
@@ -22,6 +23,8 @@ function HomePage({ onStartClick }) {
         description="Your Brand Deserves More Than Average. Crevos delivers creative and digital excellence, built for brands that refuse to settle. We offer graphic design, branding, website development, UI/UX design, motion graphics, video editing, photography, illustration, social media management and creative training."
         canonical="https://crevosltd.com.ng"
       />
+
+      <ScrollToTop />
 
       <Hero onStartClick={onStartClick} />
       <Services onStartClick={onStartClick} />
