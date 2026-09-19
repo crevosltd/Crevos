@@ -178,6 +178,7 @@ export default function FineArts() {
                   <img
                     src={fineart}
                     alt="Fine arts coming soon"
+                    loading="lazy"
                     className="absolute inset-0 h-full w-full object-cover opacity-35"
                   />
 

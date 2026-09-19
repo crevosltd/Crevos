@@ -62,7 +62,7 @@ export default function About() {
           <div className="order-2 lg:order-1">
             <div className="space-y-8">
               <div className="glass-card p-8 rounded-2xl hover:scale-105">
-                <img src={aboutimg} alt="About Us Image" className="rounded-2xl" />
+                <img src={aboutimg} alt="About Us Image" loading="lazy" className="rounded-2xl" />
                 {/* <h3 className="font-display text-2xl font-bold text-white mb-4">
                   Management Consultancy
                 </h3>

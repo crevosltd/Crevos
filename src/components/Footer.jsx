@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
-            <img src={footerLogo} alt="Footer logo" className='w-44 h-12' />
+            <img src={footerLogo} alt="Footer logo" loading="lazy" className='w-44 h-12' />
           </div>
 
           <div className="flex gap-6">

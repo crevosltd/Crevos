@@ -77,6 +77,7 @@ export default function ServiceCard({
         <img
           src={image}
           alt={title}
+          loading="lazy"
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
 
@@ -86,7 +87,7 @@ export default function ServiceCard({
         className={`absolute top-35 z-2000 left-6 w-14 h-14 rounded-full ${currentColor.split(" ")[0]} flex items-center justify-center shadow-lg border-4 border-primary/10`}
       >
         {iconSrc ? (
-          <img src={iconSrc} alt={title} className="w-7 h-7 object-contain" />
+          <img src={iconSrc} alt={title} loading="lazy" className="w-7 h-7 object-contain" />
         ) : (
           <span className="text-2xl">📌</span>
         )}

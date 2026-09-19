@@ -12,10 +12,17 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import StartProjectModal from "./components/StartProjectModal";
 import WebProjectsPage from "./pages/WebProjectsPage";
+import SEO from "./components/Seo";
 
 function HomePage({ onStartClick }) {
   return (
     <>
+      <SEO
+        title="CREVOS LTD | Graphic Design, Branding, Web Development & Creative Agency"
+        description="Your Brand Deserves More Than Average. Crevos delivers creative and digital excellence, built for brands that refuse to settle. We offer graphic design, branding, website development, UI/UX design, motion graphics, video editing, photography, illustration, social media management and creative training."
+        canonical="https://crevosltd.com.ng"
+      />
+
       <Hero onStartClick={onStartClick} />
       <Services onStartClick={onStartClick} />
       <FineArts />
@@ -42,8 +49,7 @@ function App() {
       if (targetElement) {
         const navbarHeight = 80;
         const elementPosition = targetElement.getBoundingClientRect().top;
-        const offsetPosition =
-          elementPosition + window.scrollY - navbarHeight;
+        const offsetPosition = elementPosition + window.scrollY - navbarHeight;
 
         setTimeout(() => {
           window.scrollTo({

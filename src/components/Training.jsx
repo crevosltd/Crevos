@@ -1,32 +1,4 @@
-const trainings = [
-  {
-    number: "01",
-    title: "Digital Skills",
-    description:
-      "Master industry-standard software for design, video editing, and digital content creation.",
-    color: "primary",
-    numberClass: "bg-primary/70",
-    items: ["Adobe Creative Suite", "Motion Graphics", "Web Development etc."],
-  },
-  {
-    number: "02",
-    title: "Financial Education",
-    description:
-      "Build practical investment skills, understand personal finance, and learn how to make better financial decisions.",
-    color: "secondary",
-    numberClass: "bg-secondary/70",
-    items: ["Shares & Stocks", "Mutual Funds", "Savings & Investments"],
-  },
-  {
-    number: "03",
-    title: "Business Skills",
-    description:
-      "Management consultancy and professional development for creative entrepreneurs.",
-    color: "accent",
-    numberClass: "bg-accent/70",
-    items: ["Social media management", "Client Relations", "Business Strategy"],
-  },
-];
+import { trainings } from "../assets/assets";
 
 export default function Training() {
   return (

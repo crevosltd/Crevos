@@ -123,7 +123,7 @@ export default function Hero({ onStartClick }) {
                 key={`${partner}-${index}`}
                 className="text-gray-400 font-display font-bold text-lg tracking-wide grayscale opacity-70 hover:opacity-100 transition-opacity"
               >
-                <img src={partner.logo} alt={partner.name} className="w-10 h-10" />
+                <img src={partner.logo} alt={partner.name} loading="lazy" className="w-10 h-10" />
                 {/* {partner.logo} */}
               </div>
             ))}

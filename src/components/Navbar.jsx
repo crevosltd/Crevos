@@ -25,7 +25,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center">
           <a href="/" className="font-display text-2xl font-bold tracking-tighter text-white group">
             {/* CREVOS<span className="text-primary group-hover:text-secondary transition-colors">.</span> */}
-            <img src={logo} alt="Crevos Logo" width={100} height={100} className="rounded-full" />
+            <img src={logo} alt="Crevos Logo" loading="lazy" width={100} height={100} className="rounded-full" />
 
           </a>
 
