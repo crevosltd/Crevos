@@ -2,7 +2,7 @@
 export const blogPosts = [
   {
     id: 1,
-    title: "Why Every Business Needs a Professional Website in 2026?",
+    title: "Why Every Business Needs a Professional Website in 2026? New",
     slug: "why-every-business-needs-a-professional-website",
     excerpt:
       "Your website is more than an online presence. Discover how a well-designed website builds credibility, attracts customers and helps your business grow.",
