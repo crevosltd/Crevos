@@ -7,14 +7,15 @@ import uiuxImg from "../assets/UIUX-service.jpg";
 import illustrationImg from "../assets/Illustration-service.jpg";
 import socialImg from "../assets/Social-service.jpg";
 import academyImg from "../assets/Academy-service.jpg";
-import bridgewave from "./Bridgewave.PNG"
-import Aurora from "../assets/Aurora.png"
-import Fadom from "../assets/fadom.png"
-import Mayo from "../assets/Mayo.jpg"
+import bridgewave from "./Bridgewave.PNG";
+import Aurora from "../assets/Aurora.png";
+import Fadom from "../assets/fadom.png";
+import Mayo from "../assets/Mayo.jpg";
 
 export const navLinks = [
   { href: "/#hero", label: "Home" },
   { href: "/#services", label: "Services" },
+  { href: "/blog", label: "Blog" },
   { href: "/#training", label: "Academy" },
   { href: "/#about", label: "About" },
   { href: "/#contact", label: "Get in Touch", isButton: true },
@@ -227,8 +228,6 @@ export const projects = [
   },
 ];
 
-
-
 export const trainings = [
   {
     number: "01",
@@ -294,6 +293,6 @@ export const partners = [
   {
     id: 1,
     name: "Bridgewave",
-    logo: bridgewave
-  }
-]
+    logo: bridgewave,
+  },
+];

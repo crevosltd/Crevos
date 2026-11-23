@@ -14,6 +14,8 @@ import StartProjectModal from "./components/StartProjectModal";
 import WebProjectsPage from "./pages/WebProjectsPage";
 import SEO from "./components/Seo";
 import ScrollToTop from "./components/ScrollToTop";
+import BlogPage from "./pages/BlogPage";
+import BlogDetailPage from "./pages/BlogDetailPage";
 
 function HomePage({ onStartClick }) {
   return (
@@ -70,7 +72,6 @@ function App() {
     };
   }, []);
 
-
   return (
     <div className="bg-dark text-light antialiased selection:bg-primary selection:text-white overflow-x-hidden">
       <div className="noise fixed inset-0 pointer-events-none z-50 opacity-[0.03]" />
@@ -85,6 +86,9 @@ function App() {
         />
 
         <Route path="/webprojects" element={<WebProjectsPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+
+        <Route path="/blog/:slug" element={<BlogDetailPage />} />
       </Routes>
 
       <Footer />
