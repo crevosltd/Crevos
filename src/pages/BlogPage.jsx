@@ -1,22 +1,60 @@
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Search, X } from "lucide-react";
 
 import FeaturedPost from "../components/blog/FeaturedPost";
 import BlogGrid from "../components/blog/BlogGrid";
 import BlogPagination from "../components/blog/BlogPagination";
 
-import { blogPosts } from "../data/blogPosts";
+import { getAllBlogPosts } from "../services/blogService";
 
 export default function BlogPage() {
+  const [blogPosts, setBlogPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [visibleCount, setVisibleCount] = useState(9);
 
-  // Get the featured article
-  const featuredPost = blogPosts.find(
-    (post) => post.featured
-  );
+  // Fetch blog posts from Sanity
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchPosts = async () => {
+      try {
+        setLoading(true);
+        setError(false);
+
+        const posts = await getAllBlogPosts();
+
+        if (isMounted) {
+          setBlogPosts(posts);
+        }
+      } catch (err) {
+        console.error("Error fetching blog posts:", err);
+
+        if (isMounted) {
+          setError(true);
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchPosts();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  // Get featured article
+  const featuredPost = useMemo(() => {
+    return blogPosts.find((post) => post.featured);
+  }, [blogPosts]);
 
   // Get unique categories
   const categories = useMemo(() => {
@@ -28,7 +66,7 @@ export default function BlogPage() {
           .filter(Boolean)
       ),
     ];
-  }, []);
+  }, [blogPosts]);
 
   // Filter blog posts
   const filteredPosts = useMemo(() => {
@@ -41,11 +79,11 @@ export default function BlogPage() {
 
       const matchesSearch =
         !query ||
-        post.title.toLowerCase().includes(query) ||
-        post.excerpt.toLowerCase().includes(query) ||
-        post.category.toLowerCase().includes(query);
+        post.title?.toLowerCase().includes(query) ||
+        post.excerpt?.toLowerCase().includes(query) ||
+        post.category?.toLowerCase().includes(query);
 
-      // Keep the featured article out of the regular grid
+      // Keep featured article out of the regular grid
       const isNotFeatured = !post.featured;
 
       return (
@@ -54,7 +92,7 @@ export default function BlogPage() {
         isNotFeatured
       );
     });
-  }, [activeCategory, searchQuery]);
+  }, [blogPosts, activeCategory, searchQuery]);
 
   // Visible articles
   const visiblePosts = filteredPosts.slice(
@@ -88,15 +126,12 @@ export default function BlogPage() {
       <section className="pt-28 md:pt-36 pb-12 md:pb-16">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
 
-          {/* Section Label */}
           <div className="flex items-center gap-3 mb-5">
-            {/* <span className="w-8 h-[2px] bg-primary" /> */}
             <span className="text-primary text-sm font-semibold uppercase tracking-[0.2em]">
               CREVOS Journal
             </span>
           </div>
 
-          {/* Heading */}
           <div className="max-w-3xl">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight mb-6">
               Insights, Ideas &{" "}
@@ -115,111 +150,153 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Featured Article */}
-      {featuredPost && (
-        <section className="pb-16 md:pb-20">
+      {/* Loading State */}
+      {loading && (
+        <section className="pb-20">
           <div className="max-w-7xl mx-auto px-5 sm:px-8">
-            <FeaturedPost post={featuredPost} />
+            <div className="flex flex-col items-center justify-center py-20">
+              <div className="w-10 h-10 border-4 border-primary/20 border-t-primary rounded-full animate-spin mb-5" />
+
+              <p className="text-gray-400 text-sm">
+                Loading articles...
+              </p>
+            </div>
           </div>
         </section>
       )}
 
-      {/* Blog Articles */}
-      <section className="pb-24">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+      {/* Error State */}
+      {!loading && error && (
+        <section className="pb-20">
+          <div className="max-w-7xl mx-auto px-5 sm:px-8 text-center py-16">
+            <h2 className="text-2xl font-bold mb-3">
+              Unable to Load Articles
+            </h2>
 
-          {/* Section Heading */}
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
-
-            <div>
-              <span className="text-primary text-sm font-semibold uppercase tracking-widest">
-                Explore Our Articles
-              </span>
-
-              <h2 className="text-3xl md:text-4xl font-bold text-white mt-3">
-                Latest Articles
-              </h2>
-            </div>
-
-            {/* Search */}
-            <div className="relative w-full md:max-w-sm">
-              <Search
-                size={19}
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"
-              />
-
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => {
-                  setSearchQuery(e.target.value);
-                  setVisibleCount(9);
-                }}
-                placeholder="Search articles..."
-                className="w-full h-12 pl-12 pr-11 rounded-xl bg-white/[0.04] border border-white/10 text-white text-sm placeholder:text-gray-500 outline-none focus:border-primary transition-colors"
-              />
-
-              {searchQuery && (
-                <button
-                  type="button"
-                  onClick={clearSearch}
-                  aria-label="Clear search"
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
-                >
-                  <X size={18} />
-                </button>
-              )}
-            </div>
-
-          </div>
-
-          {/* Categories */}
-          <div className="flex items-center gap-3 overflow-x-auto pb-4 mb-8 scrollbar-hide">
-            {categories.map((category) => (
-              <button
-                key={category}
-                type="button"
-                onClick={() => handleCategoryChange(category)}
-                className={`shrink-0 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
-                  activeCategory === category
-                    ? "bg-primary text-white"
-                    : "bg-white/[0.04] border border-white/10 text-gray-400 hover:text-white hover:border-primary/50"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-
-          {/* Results Count */}
-          <div className="flex items-center justify-between mb-8">
-            <p className="text-gray-500 text-sm">
-              Showing {visiblePosts.length} of{" "}
-              {filteredPosts.length} articles
+            <p className="text-gray-400 mb-6">
+              Something went wrong while retrieving our
+              articles. Please try again.
             </p>
 
-            {searchQuery && (
-              <button
-                type="button"
-                onClick={clearSearch}
-                className="text-primary text-sm hover:underline"
-              >
-                Clear search
-              </button>
-            )}
+            <button
+              type="button"
+              onClick={() => window.location.reload()}
+              className="px-6 py-3 rounded-xl bg-primary text-white hover:bg-primary/80 transition"
+            >
+              Try Again
+            </button>
           </div>
+        </section>
+      )}
 
-          {/* Blog Grid */}
-          <BlogGrid posts={visiblePosts} />
+      {!loading && !error && (
+        <>
+          {/* Featured Article */}
+          {featuredPost && (
+            <section className="pb-16 md:pb-20">
+              <div className="max-w-7xl mx-auto px-5 sm:px-8">
+                <FeaturedPost post={featuredPost} />
+              </div>
+            </section>
+          )}
 
-          {/* Load More */}
-          <BlogPagination
-            onLoadMore={handleLoadMore}
-            hasMore={hasMore}
-          />
+          {/* Blog Articles */}
+          <section className="pb-24">
+            <div className="max-w-7xl mx-auto px-5 sm:px-8">
 
-        </div>
-      </section>
+              <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+
+                <div>
+                  <span className="text-primary text-sm font-semibold uppercase tracking-widest">
+                    Explore Our Articles
+                  </span>
+
+                  <h2 className="text-3xl md:text-4xl font-bold text-white mt-3">
+                    Latest Articles
+                  </h2>
+                </div>
+
+                {/* Search */}
+                <div className="relative w-full md:max-w-sm">
+                  <Search
+                    size={19}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"
+                  />
+
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => {
+                      setSearchQuery(e.target.value);
+                      setVisibleCount(9);
+                    }}
+                    placeholder="Search articles..."
+                    className="w-full h-12 pl-12 pr-11 rounded-xl bg-white/[0.04] border border-white/10 text-white text-sm placeholder:text-gray-500 outline-none focus:border-primary transition-colors"
+                  />
+
+                  {searchQuery && (
+                    <button
+                      type="button"
+                      onClick={clearSearch}
+                      aria-label="Clear search"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+                    >
+                      <X size={18} />
+                    </button>
+                  )}
+                </div>
+
+              </div>
+
+              {/* Categories */}
+              <div className="flex items-center gap-3 overflow-x-auto pb-4 mb-8 scrollbar-hide">
+                {categories.map((category) => (
+                  <button
+                    key={category}
+                    type="button"
+                    onClick={() => handleCategoryChange(category)}
+                    className={`shrink-0 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                      activeCategory === category
+                        ? "bg-primary text-white"
+                        : "bg-white/[0.04] border border-white/10 text-gray-400 hover:text-white hover:border-primary/50"
+                    }`}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
+
+              {/* Results Count */}
+              <div className="flex items-center justify-between mb-8">
+                <p className="text-gray-500 text-sm">
+                  Showing {visiblePosts.length} of{" "}
+                  {filteredPosts.length} articles
+                </p>
+
+                {searchQuery && (
+                  <button
+                    type="button"
+                    onClick={clearSearch}
+                    className="text-primary text-sm hover:underline"
+                  >
+                    Clear search
+                  </button>
+                )}
+              </div>
+
+              {/* Blog Grid */}
+              <BlogGrid posts={visiblePosts} />
+
+              {/* Load More */}
+              <BlogPagination
+                onLoadMore={handleLoadMore}
+                hasMore={hasMore}
+              />
+
+            </div>
+          </section>
+        </>
+      )}
 
     </main>
   );
