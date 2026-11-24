@@ -1,3 +1,4 @@
+
 name: Deploy to cPanel
 
 on:
@@ -33,7 +34,4 @@ jobs:
           port: 21
           local-dir: ./dist/
           server-dir: ./
-          include: |
-            *
-            .htaccess
-            **/*
+          timeout: 60000
